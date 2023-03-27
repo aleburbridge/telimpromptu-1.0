@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="telimpromptu-revised:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>telimpromptu-revised</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="telimpromptu-revised-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="telimpromptu-revised:war exploded" />
+    </root>
+  </artifact>
+</component>

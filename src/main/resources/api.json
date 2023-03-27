@@ -1,0 +1,104 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Telimpromptu",
+    "description": "This is an API that communicates between DynamoDB and the Telimpromptu application. \n\nSome useful links:\n- [The Game repository](https://github.com/aleburbridge/Telimpromptu)\n- [The source API definition for Telimpromptu]()",
+    "version": "0.0.1"
+  },
+  "paths": {
+    "/playerResponses/{responseString}": {
+      "get": {
+        "description": "Get player responses submitted to DynamoDB",
+        "parameters": [
+          {
+            "name": "responseString",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "$ref": "#/components/schemas/PlayerResponse"
+                  },
+                  "example": {
+                    "role": "host",
+                    "sequenceNum": 0,
+                    "part": 1,
+                    "responseString": "Dog found in local doghouse"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "$ref": "#/components/schemas/Error"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "$ref": "#/components/schemas/Error"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "PlayerResponse": {
+        "type": "object",
+        "properties": {
+          "role": {
+            "type": "string"
+          },
+          "sequenceNum": {
+            "type": "integer"
+          },
+          "part": {
+            "type": "integer"
+          },
+          "responseString": {
+            "type": "string"
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+Receive responses in DynamoDB and request them back to create the final string
+
+ChatGPT prompt
+I am making a browser game in which 6 players connect and are assigned Roles. They then enter text based on prompts relevant to other players roles. When players submit their answers, they will be saved by the game. At the end of the game all of the text is combined together into a single string.
+I want the game to be hosted on a website and users can connect to it from separate devices and wifis. I want to write the backend in java. What technologies could I use to accomplish this?
+
+add src/main/java/com/example/telimprompturevised/AWSAccessKeys.java to .gitignore
+
+Log
+Downloaded IntelliJ Ultimate (3 tries ._.)
+Downloaded tomcat and created a Web Application Java Enterprise Project with tomcat
+Folder containing everything related to web is in src/main/webapp
+This folder contains the WEB-INF folder, which has contents that are hidden to the user
+WEB-INF contains web.xml file which contains configuration for web application
+To change URL: Go to Tomcat at the top of the window
+To handle login request: Use a servlet
+
+Functioning:
+Login
+Role assignment
+Waiting room
+Submit story
+Rerout to game page
+Create Prompt class
+Save prompts to Info class
+Assign prompts (prompts no longer double assign)
+Display prompts
+
+Need to get functioning pls:
+Submit prompt response
+Deliver final string

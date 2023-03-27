@@ -1,0 +1,12 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+actor Client
+participant "Website Game Page"
+participant "AddResponseToResponses"
+Database responses
+
+Client -> "Website Game Page": Submit Response Form
+"Website Game Page" -> "AddResponseToResponses": Send add response request
+"AddResponseToResponses" -> responses: save response to table
+@enduml

@@ -1,0 +1,19 @@
+Resources:
+  PlayerResponsesTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: PlayerResponses
+      AttributeDefinitions:
+        - AttributeName: "role"
+          AttributeType: "S"
+        - AttributeName: "sequenceNum"
+          AttributeType: "I"
+        - AttributeName: "part"
+          AttributeType: "I"
+        - AttributeName: "responseString"
+          AttributeType: "S"
+      KeySchema:
+        - AttributeName: "sequenceNum"
+          KeyType: "HASH"
+        - AttributeName: "role"
+          KeyType: "RANGE"

@@ -1,0 +1,100 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class GameInfo {
+    -instance: GameInfo
+    -players: List<Player>
+    -roles: List<BaseRole>
+    -allprompts: List<Prompt>
+
+    -numReady: int
+    -numJoined: int
+    -numAnswerSubmitted: int
+
+    -isRoleAssignmentDone: boolean
+    -isPromptAssignmentDone: boolean
+
+    +addPlayer()
+    +assignRoles()
+    +assignPrompts()
+
+    +getPlayerBySessionId(): Player
+    +getRoleByTitle(): BaseRole
+
+}
+
+class PromptService {
+    -allPrompts: List<Prompt>
+    +setHostPrompts()
+    +setCoHostPrompt()
+    +setDetectivePrompts()
+    +setFieldReporterPrompts()
+    +setGuestExpertPrompts()
+    +setWitnesssPrompts()
+}
+
+class Player {
+    -userName: String
+    -lastName: String
+    -fullName: String
+
+    -userId: String
+    -role: BaseRole
+    -prompts: List<Prompt>
+
+    -bestPromptPlace: int
+    -bestPerformancePlace: int
+    +getters()
+    +setters()
+}
+
+
+abstract class BaseRole {
+    -title: String
+    -description: String
+    -lastNames List<String>
+    -prompt: Prompt
+    -response: PromptResponse
+
+    +getters()
+    +setters()
+}
+
+class Host {}
+class CoHost {}
+class Detective {}
+class FieldReporter {}
+class GuestExpert {}
+class Witness {}
+
+class Prompt {
+    -roleTitle: String
+    -sequenceNum: int
+    -numOfInputBoxesNeeded: int
+    -text: String
+    -response: String
+
+    +getters()
+    +setters()
+}
+
+Player - GameInfo
+GameInfo - PromptService
+
+GameInfo -- Host
+GameInfo -- CoHost
+GameInfo -- Detective
+GameInfo -- FieldReporter
+GameInfo -- GuestExpert
+GameInfo -- Witness
+
+BaseRole -- Prompt
+
+Host <|-- BaseRole
+CoHost <|-- BaseRole
+Detective <|-- BaseRole
+FieldReporter <|-- BaseRole
+GuestExpert <|-- BaseRole
+Witness <|-- BaseRole
+
+@enduml
